@@ -1,349 +1,374 @@
-import java.util.*;
-
 public class LinkedListMain {
 
     public static void main(String[] args) {
 
-        LinkedList<String> languages = new LinkedList<>();
+        //add
+        // The add() method add an item to the list.
+//        LinkedList<String> cars = new LinkedList<>();
+//        cars.add("Volvo");
+//        cars.add("BMW");
+//        cars.add("Ford");
+//        cars.add("Mazda");
 
-        // addFirst()
-        languages.addFirst("C++");
+        // Print normal
+//        System.out.println(cars);
+//        System.out.println("***");
+//        // Enhanced loop
+//        for (String n : cars) {
+//            System.out.println(n);
+//        }
+//        System.out.println("***");
+//        // Traditional for loop
+//        for (int i = 0; i < cars.size(); i++) {
+//            System.out.println(cars.get(i));
+//        }
+//        System.out.println("***");
+//        // forEach
+//        cars.forEach(System.out::println);
 
-        // add(), ---> all so specify index position
-        // index position optional
-        languages.add(1, "Java");
-        languages.add("Python");
-        System.out.println("LinkedList: " + languages);
+        // addAll
+        // The addAll() method adds all of hte items from a collection to the list.
+//        LinkedList<String> cars = new LinkedList<>();
+//        cars.add("Volvo");
+//        cars.add("BMW");
+//        cars.add("Ford");
+//        cars.add("Mazda");
+//
+//        LinkedList<String> brads = new LinkedList<>();
+//        brads.add("Microsoft");
+//        brads.add("W3schools");
+//        brads.add("Apple");
+//
+//        brads.addAll(cars);
+//
+//        System.out.println(brads);
 
-        // create another LinkedList
-        LinkedList<String> programmingLang = new LinkedList<>();
-        // addAll()
-        // index position is optional
-        programmingLang.addAll(languages);
-        System.out.println("Programming languages: " + programmingLang);
+        // addFirst
+        // The addFirst() method adds an item to the beginning of the list.
+//        LinkedList<String> cars = new LinkedList<>();
+//        cars.add("Volvo");
+//        cars.add("BMW");
+//        cars.add("Ford");
+//
+//        // Use addFirst() to add the item to the beginning
+//        cars.addFirst("Mazda");
+//        System.out.println(cars);
 
-        LinkedList<String> numbers = new LinkedList<>();
-        numbers.add("one");
-        numbers.add("two");
-        numbers.add("five");
+        // addLast
+        // The addLast() method adds an item to the end of the list.
+//        LinkedList<String> cars = new LinkedList<>();
+//        cars.add("Volvo");
+//        cars.add("BMW");
+//        cars.add("Ford");
+//
+//        // Use addList() to add the item to the beginning
+//        cars.addLast("Mazda");
+//        System.out.println(cars);
 
-        LinkedList<String> insertedNumbers = new LinkedList<>();
-        insertedNumbers.add("three");
-        insertedNumbers.add("four");
-
-        numbers.addAll(2, insertedNumbers);
-        System.out.println("Second LinkedList: " + numbers);
-
-        HashSet<String> set = new HashSet<>();
-        set.add("Java");
-        set.add("Python");
-        set.add("JavaScript");
-        System.out.println("HashSet: " + set);
-        System.out.println(set.getClass().getSimpleName());
-        System.out.println(set.getClass());
-
-        LinkedList<String> list = new LinkedList<>();
-
-        list.add("English");
-        System.out.println("Initial LinkedList: " + list);
-
-        list.addAll(set);
-        System.out.println("Updated LinkedList: " + list);
-        System.out.println(list.getClass().getSimpleName());
-        System.out.println(list.getClass());
-
-        // clear()
-        LinkedList<String> clearList = new LinkedList<>(List.of("Java", "JavaScript", "Python"));
-        System.out.println("Clear list: " + clearList);
-        clearList.clear();
-        System.out.println("Clear list: " + clearList);
-
-        // removeAll()
-        LinkedList<String> removeAll = new LinkedList<>(List.of("one", "two", "three"));
-        System.out.println("Remove All: " + removeAll);
-        removeAll.removeAll(removeAll);
-        System.out.println("Remove All: " + removeAll);
+        // clear
+        // The clear() removes all items from the list
+//        LinkedList<String> cars = new LinkedList<>();
+//        cars.add("Volvo");
+//        cars.add("BMW");
+//        cars.add("Ford");
+//        cars.add("Mazda");
+//
+//        cars.clear();
+//        System.out.println(cars);
 
         // clone
-        LinkedList<Integer> cloneNumbers = new LinkedList<>(List.of(1, 2, 3));
+        // The clone() method returns a copy of the LinkedList as an Object.
+//        LinkedList<String> cars = new LinkedList<>();
+//        cars.add("Volvo");
+//        cars.add("BMW");
+//        cars.add("Ford");
+//        cars.add("Mazda");
+//
+//        LinkedList<String> cars2 = (LinkedList<String>) cars.clone();
+//        cars2.set(0, "Toyota");
+//
+//        System.out.println(cars);
+//        System.out.println(cars2);
 
-        LinkedList<Integer> cloneNumbersMethod = (LinkedList<Integer>) cloneNumbers.clone();
-        System.out.println(cloneNumbersMethod);
+        // contains
+        // The contains() method returns true if an item exists in a list and false otherwise
+//        LinkedList<String> cars = new LinkedList<>(List.of("Volvo", "BMW", "Ford", "Mazda"));
+//        System.out.println(cars.contains("BMW"));
+//        System.out.println(cars.contains("Toyoto"));
 
-        // contains()
-        System.out.println(languages.contains("Java"));
+        // forEach
+        // The forEach method performs an action on every item in a list.
+        // The action can be defined by a lambda expression that is compatible with the
+        // accept() method of Java's Consumer interface.
+//        LinkedList<Integer> numbers = new LinkedList<>();
+//        numbers.add(5);
+//        numbers.add(9);
+//        numbers.add(8);
+//        numbers.add(1);
+//        numbers.forEach(System.out::println);
 
-        // String contains
-        String str1 = "Java String contains()";
+        // get
+        // The get() method returns the item at a specified position in the list.
+//        LinkedList<String> cars = new LinkedList<>(List.of("Volvo", "BMW", "Ford", "Mazda"));
+//        System.out.println(cars.get(0));
 
-        boolean result = str1.contains("Java");
-        System.out.println(result);
+        // getFirst
+        // Returns the first item in the list
+//        System.out.println(cars.getFirst());
 
-        // containsAll
-        LinkedList<Integer> numbers1 = new LinkedList<>(List.of(1, 2, 3));
-        HashSet<Integer> primeNumbers1 = new HashSet<>(List.of(2, 3));
-
-        System.out.println(numbers1.containsAll(primeNumbers1));
-
-        // get()
-        System.out.println(languages.get(0));
+        // getLast
+        // Return the last item in the list
+//        System.out.println(cars.getLast());
 
         // indexOf
-        LinkedList<Integer> indexOfNumbers = new LinkedList<>();
-        indexOfNumbers.add(22);
-        indexOfNumbers.add(13);
-        indexOfNumbers.add(35);
-        System.out.println(indexOfNumbers);
+        // The indexOf() method returns the position of the first occurrence of the value
+        // in the list. If the item is not found in the list it returns -1.
+//        LinkedList<String> cars = new LinkedList<>(List.of("Volvo", "BMW", "Ford", "Mazda"));
+//        System.out.println(cars.indexOf("Ford"));
+//        System.out.println(cars.indexOf("Tesla")); // Tesla not in there.
 
-        System.out.println(indexOfNumbers.indexOf(13));
-        System.out.println(indexOfNumbers.indexOf(55));
+        // isEmpty
+        // The isEmpty() method returns true if a list has not items and false otherwise.
+//        LinkedList<String> cars = new LinkedList<>();
+//        System.out.println(cars.isEmpty());
+//        cars.add("Volvo");
+//        System.out.println(cars.isEmpty());
+
+        // iterator
+        // The iterator() method return an Iterator for the list.
+//        LinkedList<String> cars = new LinkedList<>(List.of("Volvo", "BMW", "Ford", "Mazda"));
+
+        // Get the iterator
+//        Iterator<String> it = cars.iterator();
+
+        // Loop through a collection
+//        while (it.hasNext()) {
+//            System.out.println(it.next());
+//        }
+
+        // lastIndexOf
+        // The lastIndexOf() method returns the position of the last occurrence of a value in the list.
+        // If the item is not found in the list then it returns -1.
+//        LinkedList<String> cars = new LinkedList<>(List.of("Volvo", "Ford", "BMW", "Ford", "Mazda"));
+//        System.out.println(cars.indexOf("Ford"));
+//        System.out.println(cars.lastIndexOf("Ford"));
+
+        // listIterator
+        // The listIterator() method return a ListIterator for the list.
+//        LinkedList<String> cars = new LinkedList<>(List.of("Volvo", "BMW", "Ford", "Mazda"));
+
+        // Get a iterator
+//        ListIterator<String> it = cars.listIterator();
+
+        // Loop through the list
+//        while (it.hasNext()) {
+//            System.out.println(it.next());
+//        }
+
+//        System.out.println("-----------------");
+
+        // Loop backwards through the list
+//        while (it.hasPrevious()) {
+//            System.out.println(it.previous());
+//        }
+
+        // offer
+        // The offer() method inserts the specified element at the end of the list.
+        // It's equivalent to add().
+//        LinkedList<String> list = new LinkedList<>(List.of("a", "b"));
+//        list.offer("A");
+//        list.offer("B");
+//        list.offer("C");
+//        System.out.println(list);
+
+        // offerLast
+        // The offerLast() method inserts the specified element at the end of the list.
+        // It's also equivalent add() add () offer().
+//        list.offerLast("D");
+//        list.offerLast("E");
+//        list.offerLast("F");
+//        System.out.println(list);
+
+        // offerFirst
+        // The offerFirst() method inserts the specified element at the beginning of the list.
+//        list.offerFirst("X");
+//        list.offerFirst("Y");
+//        list.offerFirst("Z");
+//        System.out.println(list);
+
+        // peek
+        // Retrieves the first item in the list -- similar to getFirst()
+//        LinkedList<String> list = new LinkedList<>(List.of("a", "b", "c"));
+//        System.out.println(list);
+//        System.out.println(list.peek());
+
+        // peekFirst
+        // Retrieves the first item in the list -- similar to peek()
+//        System.out.println(list);
+//        System.out.println(list.peekFirst());
+
+        // peekLast
+        // Retrieves the last item in the list
+//        System.out.println(list);
+//        System.out.println(list.peekLast());
+
+        // poll
+        // Returns the first element in the list --- Similar to removeFirst()'
+//        LinkedList<String> list = new LinkedList<>(List.of("a", "b", "c"));
+//        System.out.println(list);
+//        System.out.println(list.poll());
+
+        // pollFirst
+        // Retrieves and removes the first in the list. --- Similar to poll()
+//        System.out.println(list);
+//        System.out.println(list.pollFirst());
+
+        // pollLast
+        // Retrieves and removes the last in the list.
+//        System.out.println(list);
+//        System.out.println(list.pollLast());
+
+        // pop
+        // Returns the first element in the list. -- Similar to removeFirst()
+//        LinkedList<String> list = new LinkedList<>(List.of("vijay", "kumar", "roman"));
+//        System.out.println(list);
+//        System.out.println(list.pop());
+//        list.pop();
+//        System.out.println(list);
+
+        // push
+        // Adds an item to the beginning of the list. -- Similar to addFirst()
+//        System.out.println(list);
+//        list.push("aggidi");
+//        System.out.println(list);
+
+        // remove
+        // The remove() method removes an item from the list, either by position or by value.
+        // If a position is specified then this method returns the removed item.
+        // If a value is specified then it returns true if the value was found and false otherwise.
+
+//        LinkedList<String> cars = new LinkedList<>(List.of("Volvo", "BMW", "Ford", "Mazda"));
+//        cars.remove(); // Default index position 0
+//        cars.remove("BMW"); // Passing value
+//        System.out.println(cars);
 
         // removeAll
-        indexOfNumbers.removeAll(indexOfNumbers);
-        System.out.println(indexOfNumbers);
+//        // The removeAll() method removes all items from a list which belong to a specified collection.
+//        LinkedList<String> cars = new LinkedList<>(List.of("Volvo", "BMW", "Ford", "Mazda"));
+//        System.out.println(cars);
+//        cars.removeAll(cars);
+//        System.out.println(cars);
 
-        LinkedList<String> languages1 = new LinkedList<>(List.of("Java", "English", "C", "Spanish"));
-        System.out.println(languages1);
+        // removeFirst
+        // The removeFirst() method removes the first item in a list.
+//        LinkedList<String> cars = new LinkedList<>(List.of("Volvo", "BMW", "Ford", "Mazda"));
+//        System.out.println(cars);
+//        cars.removeFirst();
+//        System.out.println(cars);
 
-        LinkedList<String> languages2 = new LinkedList<>(List.of("English", "Spanish"));
+        // removeLastOccurrence
+        // Removes the last occurrence of a specified them in the list.
+//        LinkedList<String> cars = new LinkedList<>(List.of("Volvo", "BMW", "Ford", "Mazda"));
+//        cars.removeFirstOccurrence("BMW");
+//        System.out.println(cars);
 
-        languages1.removeAll(languages2);
-        System.out.println(languages1);
+        // replaceAll
+        // The replaceAll() method replaces every item in a list with the result of
+        // performing an operation on the item. The operation can be defined by a
+        // lambda expression that is a compatible with Java's UnaryOperator interface.
 
-        // remove()
-        languages1.remove(0);
-        System.out.println(languages1);
+//        LinkedList<Integer> numbers = new LinkedList<>(List.of(5, 9, 8, 6, 1));
+//        System.out.println(numbers);
+//
+//        numbers.replaceAll((n) -> n + 1);
+//        System.out.println(numbers);
+//
+//        LinkedList<String> names = new LinkedList<>(List.of("vijay", "kumar", "aggidi"));
+//        names.replaceAll(String::toUpperCase);
+//        System.out.println(names);
 
-        LinkedList<Integer> removeNumbers = new LinkedList<>(List.of(22, 13, 25, 13, 40));
-        System.out.println(removeNumbers);
+        // retailAll
+        // he retainAll() method removes all items from a list which do not belong to specified collection.
+//        LinkedList<String> languages1 = new LinkedList<>(List.of("Telugu", "English", "Tamil", "Kannada"));
+//        System.out.println(languages1);
+//        LinkedList<String> languages2 = new LinkedList<>(List.of("Telugu"));
+//        System.out.println(languages2);
 
-        boolean result1 = removeNumbers.remove(Integer.valueOf(13));
-        System.out.println(result1);
-        System.out.println(removeNumbers);
+//        languages1.retainAll(languages2);
+//        System.out.println(languages1);
 
-        // size()
-        LinkedList<String> sizeStrings = new LinkedList<>(List.of("English", "Spanish"));
-        System.out.println(sizeStrings);
-        System.out.println(sizeStrings.size());
+        // set
+        // The set() method replaces an item at a specified position
+        // in the list and returns the item that was previously  at that position.
+//        LinkedList<String> cars = new LinkedList<>(List.of("Volvo", "BMW", "Ford", "Mazda"));
+//        System.out.println(cars);
+//        cars.set(0, "Opel");
+//        System.out.println(cars);
 
-        LinkedList<Integer> sizeInteger = new LinkedList<>(List.of(22, 13, 25, 13, 40));
-        System.out.println(sizeInteger);
-        System.out.println(sizeInteger.size());
+        // size
+        // The size() method indicates how man elements are in the list.
+//        LinkedList<String> cars = new LinkedList<>(List.of("Volvo", "BMW", "Ford", "Mazda"));
+//        System.out.println(cars.size());
 
-        // isEmpty()
-        LinkedList<String> isEmptyList = new LinkedList<>();
-        System.out.println(isEmptyList);
-        System.out.println(isEmptyList.isEmpty());
-        isEmptyList.add("One");
-        System.out.println(isEmptyList);
-        System.out.println(isEmptyList.isEmpty());
+        // sort
+        // The sort() method sorts items in the list.
+        // A Comparator can be used to compare pairs of elements.
+        // The comparator can be defined by a lambda expression
+        // which is compatible with the compare() method of Java's Comparator interface.
+//        LinkedList<String> cars = new LinkedList<>(List.of("Volvo", "BMW", "Ford", "Mazda"));
+//        cars.sort(null);
+//        System.out.println(cars);
+//
+//        // Another example
+//        cars.sort((a, b) -> {
+//            return -1 * a.compareTo(b);
+//        });
+//        System.out.println(cars);
 
-        // subList()
-        LinkedList<String> subListLanguages = new LinkedList<>(List.of("JavaScript", "Java", "Python", "C++"));
-        System.out.println(subListLanguages);
-        System.out.println(subListLanguages.subList(0, 3));
+        //spliterator
+        // The spliterator() method returns a Spliterator for the list.
+        // Make a collection
+//        LinkedList<String> cars = new LinkedList<String>();
+//        cars.add("Volvo");
+//        cars.add("BMW");
+//        cars.add("Ford");
+//        cars.add("Mazda");
+//
+//        // Get the spliterator and split it
+//        Spliterator<String> it1 = cars.spliterator();
+//        Spliterator<String> it2 = it1.trySplit();
+//
+//        // Loop through the first spliterator
+//        System.out.println("First spliterator");
+//        while( it1.tryAdvance( (n) -> { System.out.println(n); } ) );
+//
+//        // Loop through the second spliterator
+//        System.out.println("\nSecond spliterator");
+//        while( it2.tryAdvance( (n) -> { System.out.println(n); } ) );
 
-        LinkedList<Integer> subListAges = new LinkedList<>(List.of(10, 12, 15, 19, 23, 36));
-        System.out.println(subListAges);
-        System.out.println("Ages below 18: " + subListAges.subList(0, 3));
-        System.out.println("Ages above 18: " + subListAges.subList(3, subListAges.size()));
-
-        // set()
-        LinkedList<String> setLanguages = new LinkedList<>();
-        setLanguages.add("Python");
-        setLanguages.add("English");
-        setLanguages.add("JavaScript");
-        System.out.println(setLanguages);
-        setLanguages.set(1, "Java"); // replace element
-        System.out.println(setLanguages);
-
-        // set() vs add()
-        // add method adding in LinkedList
-        // set method replace element in existing element
-
-        // sort()
-        LinkedList<Integer> sortNumbers = new LinkedList<>();
-        sortNumbers.add(7);
-        sortNumbers.add(3);
-        sortNumbers.add(9);
-        sortNumbers.add(-33);
-        System.out.println(sortNumbers);
-
-        sortNumbers.sort(Comparator.naturalOrder());
-        System.out.println(sortNumbers);
-
-        LinkedList<Character> charSort = new LinkedList<>(List.of('A', 'C', 'E', 'B'));
-        System.out.println(charSort);
-
-        charSort.sort(Comparator.naturalOrder());
-        System.out.println(charSort);
-        charSort.sort(Comparator.reverseOrder());
-        System.out.println(charSort);
+        // subList
+        // The subList() method returns a new list (referred to as a sublist)
+        // which contains the items of the list between two indicates.
+//        LinkedList<String> cars = new LinkedList<>();
+//        cars.add("Volvo");
+//        cars.add("BMW");
+//        cars.add("Ford");
+//        cars.add("Mazda");
+//        System.out.println(cars.subList(1, 3));
 
         // toArray
-        LinkedList<String> toArrayLanguages = new LinkedList<>();
-        toArrayLanguages.add("Java");
-        toArrayLanguages.add("Python");
-        toArrayLanguages.add("C");
-        System.out.println("LinkedList: " + toArrayLanguages);
-
-        String[] arr = new String[toArrayLanguages.size()];
-
-        toArrayLanguages.toArray(arr);
-
-        System.out.print("Array: ");
-        for (String item : arr) {
-            System.out.print(item + ", ");
-        }
-
-        System.out.println();
-
-        System.out.println(toArrayLanguages.getClass());
-        System.out.println(arr.getClass());
-
-        Object[] obj = toArrayLanguages.toArray();
-        for (Object item : obj) {
-            System.out.print(item + ", ");
-        }
-        System.out.println();
-
-        // toString
-        System.out.println(toArrayLanguages.toString());
-
-        // ensureCapacity()
-//        LinkedList<String> ensureCapacityLanguages = new LinkedList<>();
+        // The toArray() method returns an array containing all the items in the list.
+//        LinkedList<String> cars = new LinkedList<>();
+//        cars.add("Volvo");
+//        cars.add("BMW");
+//        cars.add("Ford");
+//        cars.add("Mazda");
 //
-//        ensureCapacityLanguages.ensureCapacity(3);
-//
-//        ensureCapacityLanguages.add("Java");
-//        ensureCapacityLanguages.add("Python");
-//        ensureCapacityLanguages.add("C");
-//
-//        // You can add more then three elements no problem, dynamically adjusted
-//        ensureCapacityLanguages.add("C");
-//        System.out.println(ensureCapacityLanguages);
+//        Object[] carsArray = cars.toArray();
+//        for (Object item : carsArray) {
+//            System.out.println(item);
+//        }
 
-        // lastIndexOf()
-//        System.out.println(ensureCapacityLanguages.lastIndexOf("C"));
-
-        // retailAll()
-        LinkedList<String> retailAllLanguageOne = new LinkedList<>();
-        retailAllLanguageOne.add("JavaScript");
-        retailAllLanguageOne.add("Python");
-        retailAllLanguageOne.add("Java");
-        System.out.println(retailAllLanguageOne);
-
-        LinkedList<String> retailAllLanguageTwo = new LinkedList<>();
-        retailAllLanguageTwo.add("English");
-        retailAllLanguageTwo.add("Java");
-        retailAllLanguageTwo.add("Python");
-        System.out.println(retailAllLanguageTwo);
-
-        retailAllLanguageOne.retainAll(retailAllLanguageTwo);
-        System.out.println(retailAllLanguageOne);
-
-        List<Integer> num1 = new LinkedList<>(List.of(1, 2, 3));
-        List<Integer> num2 = new LinkedList<>(List.of(23, 2, 32));
-
-        // retailAll method only common elements retail like duplicate values elements
-        num1.retainAll(num2);
-        System.out.println(num1);
-
-        // containAll()
-        LinkedList<String> containAllLanguagesOne = new LinkedList<>();
-
-        containAllLanguagesOne.add("JavaScript");
-        containAllLanguagesOne.add("Python");
-        containAllLanguagesOne.add("Java");
-        System.out.println("LinkedList One : " + containAllLanguagesOne);
-
-        LinkedList<String> containAllLanguagesTwo = new LinkedList<>();
-
-        containAllLanguagesTwo.add("Java");
-        containAllLanguagesTwo.add("Python");
-
-        System.out.println("Contain all One: " + containAllLanguagesOne.containsAll(containAllLanguagesTwo));
-        System.out.println("Contain all Two: " + containAllLanguagesTwo.containsAll(containAllLanguagesOne));
-
-//        //trimToSize()
-//        LinkedList<String> trimToSizeLanguages = new LinkedList<>();
-//
-//        trimToSizeLanguages.add("JavaScript");
-//        trimToSizeLanguages.add("Python");
-//        trimToSizeLanguages.add("Java");
-//        System.out.println("LinkedList: " + trimToSizeLanguages);
-//
-//        trimToSizeLanguages.trimToSize();
-//        System.out.println("Size of LinkedList: " + trimToSizeLanguages.size());
-
-        // removeRange()
-        LinkedList<String> removeToRangeLanguages = new LinkedList<>();
-        removeToRangeLanguages.add("Python");
-        removeToRangeLanguages.add("English");
-        removeToRangeLanguages.add("Spanish");
-        removeToRangeLanguages.add("JavaScript");
-        removeToRangeLanguages.add("Java");
-        System.out.println(removeToRangeLanguages);
-        removeToRangeLanguages.subList(1, 3).clear();
-        System.out.println(removeToRangeLanguages);
-
-        // replaceAll()
-        LinkedList<String> replaceAllLanguages = new LinkedList<>();
-
-        replaceAllLanguages.add("Java");
-        replaceAllLanguages.add("JavaScript");
-        replaceAllLanguages.add("Swift");
-        replaceAllLanguages.add("Python");
-        System.out.println("LinkedList: " + replaceAllLanguages);
-
-        replaceAllLanguages.replaceAll(String::toUpperCase);
-        System.out.println("Updated LinkedList : " + replaceAllLanguages);
-
-        LinkedList<Integer> replaceAllNumbers = new LinkedList<>(List.of(1, 2, 3, 4));
-        System.out.println(replaceAllNumbers);
-        replaceAllNumbers.replaceAll(e -> e * 2);
-        System.out.println(replaceAllNumbers);
-
-        // removeIf()
-        LinkedList<Integer> removeIfNumbers = new LinkedList<>(List.of(1, 2, 3, 4, 5, 6));
-        System.out.println(removeIfNumbers);
-        removeIfNumbers.removeIf(e -> (e % 2) == 0);
-        System.out.println(removeIfNumbers);
-
-        LinkedList<String> countries = new LinkedList<>();
-
-        // add elements to the LinkedList
-        countries.add("Iceland");
-        countries.add("America");
-        countries.add("Ireland");
-        countries.add("Canada");
-        countries.add("Greenland");
-        System.out.println("Countries: " + countries);
-
-        // remove all even countries
-        countries.removeIf(e -> e.contains("land"));;
-        System.out.println("Countries without land: " + countries);
-
-        // forEach()
-        LinkedList<Integer> forEachNumbers = new LinkedList<>(List.of(1, 2, 3, 4));
-        System.out.println(forEachNumbers);
-        System.out.println("Updated forEachNumbers: ");
-        forEachNumbers.forEach((e) -> {
-            e = e * 10;
-            System.out.print(e + " ");
-        });
-
-        System.out.println();
-        // Iterator()
-        LinkedList<String> iteratorLanguages = new LinkedList<>(List.of("Java", "Python", "JavaScript", "Swift"));
-
-        Iterator<String> iterate = iteratorLanguages.iterator();
-        while (iterate.hasNext()) {
-            System.out.print(iterate.next());
-            System.out.print(", ");
-        }
 
     }
 }
-
-
