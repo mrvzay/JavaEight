@@ -276,6 +276,8 @@ public class MostAskedMain {
     }
 
     public static void swapNumbers(int a, int b) {
+        
+        System.out.println("Before swap: a = a " + a + ", b = " + b);
         a = a + b;
         b = a - b;
         a = a - b;
