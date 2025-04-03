@@ -262,4 +262,127 @@ static class Node<K,V> implements Map.Entry<K,V> {
 | **Resizing** | Doubles capacity when threshold is crossed |
 | **Thread Safety** | Not thread-safe (use `ConcurrentHashMap`) |
 
-Would you like a deep dive into **hash collision attacks** or **performance benchmarks**? 😊
+
+
+
+# **HashMap Time Complexity in Java**
+
+Understanding the time complexity of HashMap operations is crucial for writing efficient Java applications. Below is a detailed breakdown of the time complexity for various HashMap operations.
+
+## **1. Time Complexity Summary**
+| Operation | Average Case | Worst Case (Before Java 8) | Worst Case (Java 8+) |
+|-----------|-------------|----------------------------|----------------------|
+| **`put(K key, V value)`** | O(1) | O(n) | O(log n) |
+| **`get(Object key)`** | O(1) | O(n) | O(log n) |
+| **`remove(Object key)`** | O(1) | O(n) | O(log n) |
+| **`containsKey(Object key)`** | O(1) | O(n) | O(log n) |
+| **`containsValue(Object value)`** | O(n) | O(n) | O(n) |
+| **`resize()` (Rehashing)** | O(n) | O(n) | O(n) |
+| **Iteration (`keySet()`, `values()`, `entrySet()`)** | O(n) | O(n) | O(n) |
+
+---
+
+## **2. Detailed Explanation**
+
+### **A. `put()`, `get()`, `remove()` Operations**
+- **Average Case (O(1))**  
+  - Assumes **good hash distribution** (keys spread evenly across buckets).
+  - Uses **hashing** to compute bucket index in **constant time**.
+  - If no collision → direct access (O(1)).
+
+- **Worst Case Before Java 8 (O(n))**  
+  - All keys **collide in the same bucket**, forming a **long linked list**.
+  - Requires traversing the entire list → **O(n)**.
+
+- **Worst Case in Java 8+ (O(log n))**  
+  - If a bucket grows beyond `TREEIFY_THRESHOLD` (8), it converts to a **Red-Black Tree**.
+  - Search/insert in a balanced tree → **O(log n)**.
+
+### **B. `containsValue()` and Iteration (O(n))**
+- **`containsValue()`**  
+  - Must scan **all entries** (no direct hashing for values).
+  - **O(n)** in all cases.
+
+- **Iteration (`keySet()`, `values()`, `entrySet()`)**  
+  - Requires visiting **all buckets** and **all nodes**.
+  - **O(n)** regardless of collisions.
+
+### **C. Resizing (Rehashing) (O(n))**
+- When the HashMap grows beyond `(capacity × load factor)`:
+  - A new array is created (double the size).
+  - All existing entries are **rehashed and redistributed**.
+  - **O(n)** since every entry must be processed.
+
+---
+
+## **3. Factors Affecting Performance**
+### **A. Good Hash Function**
+- **Bad `hashCode()`** → More collisions → Degrades to O(n) or O(log n).
+- **Best Practice**: Override `hashCode()` to distribute keys uniformly.
+  ```java
+  @Override
+  public int hashCode() {
+      return Objects.hash(key1, key2); // Properly combines fields
+  }
+  ```
+
+### **B. Load Factor & Initial Capacity**
+- **High Load Factor (e.g., 0.90)** → More collisions but less memory.
+- **Low Load Factor (e.g., 0.50)** → Fewer collisions but more memory.
+- **Best Practice**: Set **initial capacity** if size is known:
+  ```java
+  // Prevents resizing if we know there will be 1000 entries
+  HashMap<String, Integer> map = new HashMap<>(1000, 0.75f);
+  ```
+
+### **C. Key Immutability**
+- If a **key's `hashCode()` changes** after insertion:
+  - The HashMap **won't find it** in the correct bucket.
+  - **Best Practice**: Use **immutable keys** (e.g., `String`, `Integer`).
+
+---
+
+## **4. Java 8+ Optimizations**
+| Optimization | Impact |
+|--------------|--------|
+| **Treeify Threshold (8)** | Converts long linked lists → Red-Black Trees (O(log n)) |
+| **Untreeify Threshold (6)** | Converts small trees back to linked lists |
+| **Better Hash Spreading** | `(h = key.hashCode()) ^ (h >>> 16)` reduces collisions |
+
+---
+
+## **5. Real-World Performance Considerations**
+1. **Small HashMaps** (e.g., < 100 entries)  
+   - Even O(n) worst case is negligible.
+
+2. **Large HashMaps** (e.g., 1M+ entries)  
+   - Ensure **good `hashCode()`** to avoid O(n) behavior.
+
+3. **Multi-threaded Use**  
+   - `HashMap` is **not thread-safe** → Use `ConcurrentHashMap` (lock striping for better concurrency).
+
+---
+
+## **6. Example: HashMap vs. TreeMap vs. LinkedHashMap**
+| Map Type | `get()`/`put()` Time | Ordering | Thread-Safe |
+|----------|----------------------|----------|-------------|
+| **HashMap** | O(1) avg / O(log n) worst | Unordered | No |
+| **TreeMap** | O(log n) | Sorted (natural/comparator) | No |
+| **LinkedHashMap** | O(1) avg | Insertion-order / Access-order | No |
+| **ConcurrentHashMap** | O(1) avg / O(log n) worst | Unordered | Yes |
+
+---
+
+## **7. Summary**
+✅ **Best Case (Good Hashing)** → **O(1)** for `get`, `put`, `remove`.  
+✅ **Java 8+ Worst Case** → **O(log n)** due to tree conversion.  
+❌ **Pre-Java 8 Worst Case** → **O(n)** (linked list traversal).  
+⚠ **`containsValue()` & Iteration** → Always **O(n)**.  
+
+### **Best Practices**
+✔ **Use immutable keys** (e.g., `String`, `Integer`).  
+✔ **Override `hashCode()` and `equals()` properly**.  
+✔ **Set initial capacity** if size is known.  
+✔ **Use `ConcurrentHashMap`** for thread safety.  
+
+Would you like a deeper comparison with **`HashTable`** or **`ConcurrentHashMap`**? 😊
