@@ -233,3 +233,103 @@ By keeping **coupling low** and **cohesion high**, your Java code becomes:
 📈 **More scalable**  
 
 This is why these principles are **fundamental** in OOP and enterprise Java development!
+
+
+
+
+
+Can you have 100 coupling and low cohesion at the same time ? provide an example ?
+
+### **Can You Have 100% Coupling + Low Cohesion?**  
+**Yes!** This is the **worst-case scenario** in software design—a class that is **tightly coupled** to many others while also being **unfocused** (low cohesion).  
+
+---
+
+### **Example: A "God Class" with High Coupling + Low Cohesion**  
+```java
+// ❌ Terrible Design: "God Class" with 100% coupling + low cohesion
+class SuperManager {
+    private Database db;          // Coupled to Database
+    private EmailService email;   // Coupled to EmailService
+    private Logger logger;        // Coupled to Logger
+    private PaymentGateway payment; // Coupled to PaymentGateway
+
+    // Low Cohesion: Does EVERYTHING (user, order, payment, logging)
+    void registerUser(User user) {
+        db.saveUser(user);
+        email.sendWelcomeEmail(user);
+        logger.log("New user: " + user.getName());
+    }
+
+    void processOrder(Order order) {
+        db.saveOrder(order);
+        payment.charge(order.getAmount());
+        logger.log("Order processed: " + order.getId());
+    }
+
+    void generateReport() {
+        List<User> users = db.getAllUsers();
+        List<Order> orders = db.getAllOrders();
+        // ... sends report via email
+        email.sendReport(users, orders);
+    }
+}
+```
+
+---
+
+### **Why This is a Disaster**  
+#### **1. 100% Coupling (Tight Dependencies)**  
+- `SuperManager` **depends directly** on:  
+  - `Database`  
+  - `EmailService`  
+  - `Logger`  
+  - `PaymentGateway`  
+- **Changing any dependency (e.g., `EmailService` → `SmsService`) forces `SuperManager` to change.**  
+
+#### **2. Low Cohesion (Does Everything Poorly)**  
+- **Violates Single Responsibility Principle (SRP)**  
+  - Manages **users, orders, payments, logging, reports**—all in one class!  
+- **Hard to maintain** → Fixing a bug in payments might break user registration.  
+- **Hard to test** → Requires mocking **all dependencies** for unit tests.  
+
+---
+
+### **How to Fix It?**  
+✅ **Apply High Cohesion + Low Coupling:**  
+```java
+// High Cohesion: Each class does ONE thing well
+class UserService {
+    private final Database db;
+    private final EmailService email;
+    UserService(Database db, EmailService email) { ... }
+    void registerUser(User user) { ... }
+}
+
+class OrderService {
+    private final Database db;
+    private final PaymentGateway payment;
+    OrderService(Database db, PaymentGateway payment) { ... }
+    void processOrder(Order order) { ... }
+}
+
+// Low Coupling: Dependencies injected via interfaces
+interface EmailService { ... }
+class SmtpEmailService implements EmailService { ... }
+class MockEmailService implements EmailService { ... } // For testing
+```
+
+---
+
+### **Key Takeaways**  
+| Scenario | Coupling | Cohesion | Result |  
+|----------|---------|---------|--------|  
+| **God Class** | 100% (High) | Low | ❌ **Unmaintainable spaghetti code** |  
+| **Modular Design** | Low | High | ✅ **Clean, testable, scalable** |  
+
+**Avoid this anti-pattern at all costs!**  
+➡ **Refactor into smaller, focused classes.**  
+➡ **Use Dependency Injection (Spring, Guice).**  
+➡ **Follow SOLID principles.**  
+
+This is why **low coupling + high cohesion** is the golden rule in OOP. 🏆
